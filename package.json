@@ -1,15 +1,21 @@
 {
-  "name": "microcms-table",
+  "name": "microcms-iframe-table",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-scripts": "5.0.0",
-    "web-vitals": "^2.1.4"
+    "@tiptap/extension-bold": "^2.0.0-beta.26",
+    "@tiptap/extension-table": "^2.0.0-beta.48",
+    "@tiptap/extension-table-cell": "^2.0.0-beta.20",
+    "@tiptap/extension-table-header": "^2.0.0-beta.22",
+    "@tiptap/extension-table-row": "^2.0.0-beta.19",
+    "@tiptap/react": "^2.0.0-beta.108",
+    "@tiptap/starter-kit": "^2.0.0-beta.183",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-scripts": "^5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "sass": "^1.49.11"
   }
 }
