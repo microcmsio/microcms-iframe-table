@@ -1,4 +1,4 @@
-import Editor from './Editor.jsx'
+import { Editor } from './Editor.jsx'
 import './css/App.scss';
 
 const App = () => {

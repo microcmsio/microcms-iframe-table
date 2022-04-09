@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { useState, useEffect } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import Document from "@tiptap/extension-document";
@@ -25,11 +26,11 @@ import BoldIcon from "./icon/bold.svg";
 // CSS
 import "./css/Editor.scss";
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default () => {
-  const [iframeId, setIframeId] = useState(null);
-  const [message, setMessage] = useState(null);
-  const [editorContent, setEditorContent] = useState("");
+export const Editor = () => {
+  const [state, setState] = useState({
+    iframeId: "",
+    defaultMessage: {},
+  });
 
   const microcmsAdminUrl = "https://tiptap-table-demo.microcms.io";
 
@@ -39,34 +40,29 @@ export default () => {
         e.isTrusted === true &&
         e.data.action === "MICROCMS_GET_DEFAULT_DATA"
       ) {
-        setIframeId(e.data.id);
-        setMessage(e.data.message);
+        setState({
+          iframeId: e.data.id,
+          defaultMessage: e.data.message,
+        });
+
+        window.parent.postMessage(
+          {
+            id: e.data.id,
+            action: "MICROCMS_UPDATE_STYLE",
+            message: {
+              height: 300,
+            },
+          },
+          microcmsAdminUrl
+        );
       }
     });
   }, []);
 
-  useEffect(() => {
+  const postDataToMicroCMS = (editorContent) => {
     window.parent.postMessage(
       {
-        id: iframeId,
-        action: "MICROCMS_UPDATE_STYLE",
-        message: {
-          height: 300,
-          width: "100%",
-        },
-      },
-      microcmsAdminUrl
-    );
-  }, [iframeId]);
-
-  useEffect(() => {
-    postDataToMicroCMS();
-  }, [editorContent]);
-
-  const postDataToMicroCMS = () => {
-    window.parent.postMessage(
-      {
-        id: iframeId,
+        id: state.iframeId,
         action: "MICROCMS_POST_DATA",
         message: {
           data: editorContent,
@@ -116,16 +112,15 @@ export default () => {
         </table>
     `,
       onCreate({ editor }) {
-        console.log(message);
-        if (message) {
-          editor.commands.setContent(message.data);
+        if (state.defaultMessage) {
+          editor.commands.setContent(state.defaultMessage.data);
         }
       },
       onUpdate({ editor }) {
-        setEditorContent(editor.getHTML());
+        postDataToMicroCMS(editor.getHTML());
       },
     },
-    [message]
+    [state.defaultMessage]
   );
 
   if (!editor) {
