@@ -112,7 +112,7 @@ export const Editor = () => {
         </table>
     `,
       onCreate({ editor }) {
-        if (state.defaultMessage) {
+        if (Object.keys(state.defaultMessage).length) {
           editor.commands.setContent(state.defaultMessage.data);
         }
       },
