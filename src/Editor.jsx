@@ -26,13 +26,13 @@ import BoldIcon from "./icon/bold.svg";
 // CSS
 import "./css/Editor.scss";
 
+const microcmsAdminUrl = document.referrer;
+
 export const Editor = () => {
   const [state, setState] = useState({
     iframeId: "",
     defaultMessage: {},
   });
-
-  const microcmsAdminUrl = "https://tiptap-table-demo.microcms.io";
 
   useEffect(() => {
     window.addEventListener("message", (e) => {
