@@ -10,7 +10,9 @@
 
 ## 利用方法
 
-microCMS の iframe フィールドより、URL を指定することで使用可能です。詳しくは https://blog.microcms.io/iframe-table/ をご覧ください。
+microCMS の iframe フィールドより、URL を指定することで使用可能です。
+詳しくは https://blog.microcms.io/iframe-table/ をご覧ください。
+設定にあたっては、デプロイ済みのサービスを利用する方法と、セルフホスティングする方法があります。
 
 ### デプロイ済みのサービスを利用
 
