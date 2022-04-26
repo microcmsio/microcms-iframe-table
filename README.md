@@ -46,7 +46,7 @@ $ npm install
 $ npm run start
 ```
 
-microCMS の iFrame フィールドにて`http://localhost:3000`を指定することでデバッグ可能です。
+microCMS の iframe フィールドにて`http://localhost:3000`を指定することでデバッグ可能です。
 
 その場合、管理画面の URL をリファラーで取得できないため、`Editor.jsx`内の`microcmsAdminUrl`に、管理画面の URL を指定してください。
 
