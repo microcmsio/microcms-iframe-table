@@ -1,5 +1,12 @@
 # microcms-iframe-table
 
+## ステータス
+新しいリッチエディタにて、テーブル入力機能が実装されました。
+*＊今後テーブルを利用する際は、リッチエディタをご利用ください。*＊
+https://document.microcms.io/manual/rich-editor-usage
+
+こちらのプロジェクトは、今後更新の予定はございません。
+
 ## 機能
 
 - microCMS の外部データ連携を利用して、管理画面からテーブルを入力する
